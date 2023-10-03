@@ -1,41 +1,50 @@
-gpt-author
-This project is designed to leverage the capabilities of GPT-3.5 Turbo to generate an original fantasy novel. Users can input an initial prompt and specify the number of chapters desired. The AI then crafts an entire novel, outputting it as an EPUB file suitable for e-book readers.
+# gpt-author
 
-A 15-chapter novel can be generated in just a few minutes.
+This project utilizes GPT-3.5 Turbo to generate original fantasy novels. By accepting an initial prompt and a specified number of chapters from users, the AI crafts an entire novel and outputs it as an EPUB file, ready for e-book readers.
 
-Examples of the novels produced are available in this repository. To read one, download its file and view it on fviewer, or transfer it to your e-reader.
+A 15-chapter novel can be generated in mere minutes.
 
-How It Works
-The AI is prompted to brainstorm a list of potential plots based on the user's input. It then selects an engaging plot, refines it, and deduces a suitable title. Following this, it forms a detailed storyline with the specified number of chapters. Each chapter is meticulously crafted by the AI, adhering to the storyline and ensuring consistency with prior chapters. The novel is then compiled into an EPUB format.
+**Examples** of the novels produced are available in this repository. To read one, download its file and view it on an e-book viewer, or transfer it to your e-reader.
 
-Prerequisites
-Ensure you have Visual Studio Code installed. The latest version is recommended.
-If required, install additional extensions such as the Jupyter extension when prompted.
-Create a virtual environment:
-bash
-Copy code
-python -m venv env
-Store environment variables in a .env file in the main project directory.
-Remember, .env and env will be ignored by Git, as specified in the .gitignore file.
-Installation & Usage
-To set up and run the project:
+## How It Works
 
-Clone the repository and navigate to the project directory.
-Activate the virtual environment:
-bash
-Copy code
-source env/bin/activate
-Install the necessary packages from requirements.txt:
-bash
-Copy code
-pip install -r requirements.txt
-Open the project in Visual Studio Code and run the program.
-In the code, you can fine-tune the MAX_TOKEN value to adjust the intensity of the API calls.
+1. **Brainstorming**: The AI generates a list of potential plots based on user input.
+2. **Plot Selection**: Engaging plots are chosen and refined, and a suitable title is deduced.
+3. **Storyline Creation**: A detailed storyline is formed, incorporating the specified number of chapters.
+4. **Chapter Writing**: Each chapter is meticulously crafted, adhering to the storyline and ensuring consistency with preceding chapters.
+5. **EPUB Compilation**: The novel is compiled into an EPUB format.
 
-Example of generating a novel:
+### Tiktoken Usage
 
-python
-Copy code
+To manage API usage and avoid unexpected costs, `tiktoken` is employed to count the tokens in a text string without making an API call. The `write_chapter` function dynamically manages the content sent to the API, ensuring it adheres to token limitations by adjusting the content where necessary. This ensures efficient usage of the OpenAI API and aids in maintaining control over the generation process.
+
+## Prerequisites
+
+- Ensure Visual Studio Code is installed. The latest version is recommended.
+- Install additional extensions as required (e.g., Jupyter extension).
+- Create a virtual environment:
+    ```bash
+    python -m venv env
+    ```
+- Store environment variables in a `.env` file in the main project directory. `.env` and `env` are ignored by Git, as specified in the `.gitignore` file.
+
+## Installation & Usage
+
+1. Clone the repository and navigate to the project directory.
+2. Activate the virtual environment:
+    ```bash
+    source env/bin/activate
+    ```
+3. Install the necessary packages from `requirements.txt`:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4. Open the project in Visual Studio Code and run the program.
+5. Adjust the `MAX_TOKEN` value in the code to manage the intensity of the API calls.
+
+### Example
+
+```python
 prompt = "A story reminiscent of Percy Jackson or Harry Potter but with a unique plot set in the present day. Incorporate technology elements."
 num_chapters = 20
 writing_style = "Clear and easily understood, akin to a young adult novel. Highly descriptive and occasionally verbose."
@@ -43,19 +52,18 @@ novel, title, chapters, chapter_titles = write_fantasy_novel(prompt, num_chapter
 Contributions
 Contributions, issues, and feature requests are always welcome!
 
-Potential areas of enhancement include:
-
-Bettering the initial chapter, as it sets the tone for the entire novel.
-Refining prompts for improved results.
-Augmenting the process with additional checks and generations.
-Expanding beyond the fantasy genre to include others.
-Addressing issues where some chapters might truncate prematurely.
+Potential Enhancements
+Improve the initial chapter for setting the novel's tone.
+Refine prompts for optimized results.
+Augment the process with additional checks and generations.
+Expand beyond the fantasy genre.
+Address issues of chapter truncation.
 License
 This project is MIT licensed.
 
 Contact
 Matt Shumer - @mattshumer_
 
-Project Link: https://github.com/mshumer/gpt-author/
+Project Link
 
 Feel free to modify or expand upon this as needed!
